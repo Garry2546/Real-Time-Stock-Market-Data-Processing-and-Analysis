@@ -30,18 +30,6 @@ AWS Glue Crawler scans the data in S3 and automatically populates the AWS Glue D
 
 Amazon Athena is used to query the data stored in S3. Athena allows for serverless, ad-hoc analysis of the data using standard SQL queries, leveraging the metadata stored in the AWS Glue Data Catalog.
 
-### Technologies Used
-Python: For simulating the stock market data and implementing the producer and consumer logic.
-Apache Kafka: For real-time data streaming, ensuring reliable and scalable data flow.
-AWS Boto3 SDK: For interacting with AWS services such as S3.
-Amazon S3: For storing the processed data in a scalable and durable manner.
-AWS Glue: For automated data cataloging, making data discoverable and usable for analysis.
-Amazon Athena: For querying and analyzing the data stored in S3 using SQL.
-Key Features
-Real-Time Data Streaming: The system captures and streams real-time stock market data using Kafka.
-Scalable Data Storage: Data is stored in Amazon S3, which scales automatically with the volume of data.
-Automated Data Cataloging: AWS Glue Crawlers automate the discovery and cataloging of data, making it easy to manage and query.
-Serverless Data Analysis: Amazon Athena provides a serverless environment for querying and analyzing the data, eliminating the need for infrastructure management.
 
 
 
