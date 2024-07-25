@@ -31,6 +31,7 @@ AWS Glue Crawler scans the data in S3 and automatically populates the AWS Glue D
 Amazon Athena is used to query the data stored in S3. Athena allows for serverless, ad-hoc analysis of the data using standard SQL queries, leveraging the metadata stored in the AWS Glue Data Catalog.
 
 
+![Architecture](https://github.com/user-attachments/assets/f59dd564-120f-4bc8-933a-ef02bd0cfd5d)
 
 
 
