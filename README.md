@@ -1,37 +1,67 @@
-# Stock-Market-Analysis
+# Tesla Stock Prediction with Bayesian Deep Learning
 
-### Project Overview
-This project demonstrates a real-time stock market data processing and analysis system using modern data engineering and cloud technologies. The architecture captures real-time stock data, processes it, and stores it for further analysis using Amazon Web Services (AWS). The system leverages Apache Kafka for data streaming, Amazon S3 for storage, AWS Glue for data cataloging, and Amazon Athena for querying the stored data.
+This project aims to predict Tesla stock prices using two different approaches:
+- **Supervised Learning** using a **Bayesian LSTM** model.
+- **Reinforcement Learning** using a **Bayesian DQN** model.
 
-## Architecture Description
-### Data Source (Stock Market App Simulation):
+Both approaches incorporate Bayesian methods to quantify uncertainty in predictions—allowing for risk-aware trading decisions on volatile data. In each technique, an initial capital of \$10,000 is provided and the model makes buy, sell, or hold decisions. The results are evaluated based on profit/loss and are visualized via figures stored in the `figures/` folder, while all trained models are saved in the `model/` folder.
 
-A Python-based stock market simulation app fetches real-time stock data from APIs.
+---
 
-Producer:
+## Project Structure
 
-The simulated stock data is sent to Apache Kafka, running on an Amazon EC2 instance. Kafka acts as the data streaming platform, providing a scalable and fault-tolerant way to capture and transport the data.
+---
 
-### Kafka (Running on Amazon EC2):
+## Models
 
-Kafka is used for real-time data streaming. The producer sends stock market data to Kafka topics, and a consumer fetches the data for storage and analysis.
-Consumer:
+### Bayesian LSTM (Supervised Learning)
+- **Overview:**  
+  A Bayesian LSTM model uses Long Short-Term Memory networks enhanced with Bayesian techniques (e.g., Monte Carlo dropout) to predict future stock prices.  
+- **How It Works:**  
+  The model is trained on historical Tesla stock data with engineered features (e.g., log price, moving averages, returns) and produces both point predictions and uncertainty estimates.  
+- **Trading Simulation:**  
+  With \$10,000 as starting capital, the model takes active buy/sell decisions based on its prediction—aiming to maximize profit. Results and performance metrics are saved in the `figures/` folder.
 
-The Kafka consumer reads the real-time data from the Kafka topics and processes it.
+### Bayesian DQN (Reinforcement Learning)
+- **Overview:**  
+  A Bayesian Deep Q-Network (DQN) model learns an optimal trading policy by estimating action-value functions while incorporating uncertainty in the network weights.  
+- **How It Works:**  
+  Using reinforcement learning libraries (e.g., Gym), the agent interacts with a simulated trading environment for Tesla stock, receiving rewards for profitable trades.  
+- **Trading Simulation:**  
+  Similarly, the model starts with \$10,000 and decides between buy, sell, or hold actions. The simulation performance is recorded and plotted, with trained models saved in the `model/` folder.
 
-### Amazon S3:
+---
 
-Processed data is stored in Amazon S3, a scalable object storage service. This allows for durable storage of the stock market data, making it available for future analysis and machine learning workflows.
+## Bayesian vs. Normal Algorithms
 
-### AWS Glue Data Catalog:
+- **Bayesian Algorithms:**  
+  They model uncertainty by placing probability distributions over weights rather than fixed values. This results in confidence intervals for predictions, which is crucial in volatile markets.
+  
+- **Normal (Deterministic) Algorithms:**  
+  They use fixed weights and provide point estimates only, lacking inherent measures of uncertainty and potentially leading to overconfident decisions.
 
-AWS Glue Crawler scans the data in S3 and automatically populates the AWS Glue Data Catalog. This catalog acts as a metadata repository, storing schema information about the data stored in S3.
-### Amazon Athena:
+---
+## Data
 
-Amazon Athena is used to query the data stored in S3. Athena allows for serverless, ad-hoc analysis of the data using standard SQL queries, leveraging the metadata stored in the AWS Glue Data Catalog.
+- **Source:**
+The historical data has been collected from YahooFinance website from year 2010 to 2025.  
 
+---
+## Requirements
 
-![Architecture](https://github.com/user-attachments/assets/f59dd564-120f-4bc8-933a-ef02bd0cfd5d)
+The project uses the following libraries:
+- Python 3.x
+- **PyTorch**
+- **TensorFlow** (and Keras)
+- **NumPy**
+- **Pandas**
+- **Matplotlib**
+- **scikit-learn**
+- **Gym**
 
+### Credit: ID-11028972  Supervisor: Hongpeng Zhou
 
-
+Install the required packages via pip:
+```bash
+pip install torch tensorflow numpy pandas matplotlib scikit-learn gym
+ 
